@@ -1,0 +1,102 @@
+Create a new HDFS file structure data/dev/analysis in the HDFS home directory.Copy the covid-19 folder in to it.                                                                                   
+[mavricbdhoct08@ip-10-1-1-204 ~]$ hdfs dfs -ls data/dev/analysis                                                                       
+Found 1 items                                                                                                                          
+drwxr-xr-x   - mavricbdhoct08 mavricbdhoct08          0 2023-10-26 11:51 data/dev/analysis/codid-19  
+Change the permission of Covid_patient_Apr26.csv file to have only read/write/execute for the owner/ group and read/write permission for others.
+[mavricbdhoct08@ip-10-1-1-204 ~]$ hdfs dfs -chmod 776 data/dev/analysis/codid-19/Covid_patient_Apr26.csv                               
+[mavricbdhoct08@ip-10-1-1-204 ~]$ hdfs dfs -ls data/dev/analysis/codid-19/Covid_patient_Apr26.csv                                      
+-rwxrwxrw-   3 mavricbdhoct08 mavricbdhoct08    1576844 2023-10-26 11:51 data/dev/analysis/codid-19/Covid_patient_Apr26.csv      
+Copy covid-19 folder in to another hdfs directory data/prod/analysis
+[mavricbdhoct08@ip-10-1-1-204 ~]$ hdfs dfs -ls data/prod/analysis/                                                                     
+Found 1 items                                                                                                                          
+drwxr-xr-x   - mavricbdhoct08 mavricbdhoct08          0 2023-10-26 13:24 data/prod/analysis/codid-19  
+Read the contents of the file Covid_patient_Apr19.csv and print the contents on the screen
+[mavricbdhoct08@ip-10-1-1-204 ~]$ hdfs dfs -cat data/dev/analysis/codid-19/Covid_patient_Apr19.csv |less                               
+Patient Number,State Patient Number,Date Announced,Estimated Onset Date,Age Bracket,Gender,Detected City,Detected District,Detected Sta
+te,State code,Current Status,Notes,Contracted from which Patient (Suspected),Nationality,Type of transmission,Status Change Date,Source
+_1,Source_2,Source_3,Backup Notes,Num Cases
+1,KL-TS-P1,30/01/2020,,20,F,Thrissur,Thrissur,Kerala,KL,Recovered,Travelled from Wuhan,,India,Imported,14/02/2020,https://twitter.com/v
+ijayanpinarayi/status/1222819465143832577,https://weather.com/en-IN/india/news/news/2020-02-14-kerala-defeats-coronavirus-indias-three-
+covid-19-patients-successfully,,Student from Wuhan,1
+2,KL-AL-P1,02/02/2020,,,,Alappuzha,Alappuzha,Kerala,KL,Recovered,Travelled from Wuhan,,India,Imported,14/02/2020,https://www.indiatoday
+.in/india/story/kerala-reports-second-case-of-coronavirus-1642494-2020-02-02,https://weather.com/en-IN/india/news/news/2020-02-14-keral
+a-defeats-coronavirus-indias-three-covid-19-patients-successfully,,Student from Wuhan,1
+3,KL-KS-P1,03/02/2020,,,,Kasaragod,Kasaragod,Kerala,KL,Recovered,Travelled from Wuhan,,India,Imported,14/02/2020,https://www.indiatoday
+.in/india/story/kerala-now-confirms-third-case-of-coronavirus-1642789-2020-02-03,https://twitter.com/ANI/status/1224221485805395968?s=2
+0,https://weather.com/en-IN/india/news/news/2020-02-14-kerala-defeats-coronavirus-indias-three-covid-19-patients-successfully,Student f
+rom Wuhan,1
+4,DL-P1,02/03/2020,,45,M,East Delhi (Mayur Vihar),East Delhi,Delhi,DL,Recovered,"Travelled from Austria, Italy",,India,Imported,15/03/2
+020,https://www.indiatoday.in/india/story/not-a-jail-delhi-s-1st-covid-19-patient-recalls-time-in-isolation-ward-has-this-one-tip-for-o
+thers-1656088-2020-03-16,https://economictimes.indiatimes.com/news/politics-and-nation/coronavirus-cases-in-india-live-news-latest-upda
+tes-mar2/liveblog/74432375.cms,,Travel history to Italy and Austria,1
+5,TS-P1,02/03/2020,,24,M,Hyderabad,Hyderabad,Telangana,TG,Recovered,"Travelled from Dubai to Bangalore on 20th Feb, stayed there for 2 
+days and took a bus to Hyderabad",,India,Imported,02/03/2020,https://www.deccanherald.com/national/south/quarantine-not-a-jail-no-stigm
+a-attached-telanganas-first-coronavirus-case-and-survivor-819012.html,https://www.indiatoday.in/india/story/coronavirus-in-india-tracki
+ng-country-s-first-50-covid-19-cases-what-numbers-tell-1654468-2020-03-12,https://www.thehindu.com/news/national/coronavirus-live-updat
+es-march-14-2020/article31066969.ece,"Travel history to Dubai, Singapore contact",1
+6,,03/03/2020,,69,M,Jaipur,Italians,Rajasthan,RJ,Recovered,Travelled from Italy,,Italy,Imported,03/03/2020,https://indianexpress.com/ar
+ticle/india/coronavirus-outbreak-live-updates-pm-modi-6303338/,https://economictimes.indiatimes.com/news/politics-and-nation/all-3-old-
+corona-positive-patients-cured-one-new-virus-hit-man-undergoing-treatment-official/articleshow/74638120.cms?from=mdr,https://twitter.co
+m/PTI_News/status/1240878975846506496,Italian tourist,1
+7,,04/03/2020,,55,,Gurugram,Italians,Haryana,HR,Recovered,Travelled from Italy,P6,Italy,Imported,29/03/2020,https://indianexpress.com/a
+rticle/india/coronavirus-outbreak-live-updates-pm-modi-6303338/,https://www.indiatoday.in/india/story/coronavirus-in-india-tracking-cou
+ntry-s-first-50-covid-19-cases-what-numbers-tell-1654468-2020-03-12,,Italian tourist,1
+8,,04/03/2020,,55,,Gurugram,Italians,Haryana,HR,Recovered,Travelled from Italy,P6,Italy,Imported,29/03/2020,https://indianexpress.com/a
+:       
+Print the no of lines present in the HDFS file Covid_patient_Apr19.csv
+[mavricbdhoct08@ip-10-1-1-204 ~]$ hdfs dfs -cat data/dev/analysis/codid-19/Covid_patient_Apr19.csv |wc                                 
+  17365   49634 2878318  
+Copy the tickitdb folder(in the local file system) in to HDFS home directory. How many blocks will be created for the files in this directory
+[mavricbdhoct08@ip-10-1-1-204 ~]$ hdfs dfs -ls                                                                                         
+Found 10 items                                                                                                                         
+drwx------   - mavricbdhoct08 mavricbdhoct08          0 2023-10-26 14:00 .Trash                                                        
+drwx------   - mavricbdhoct08 mavricbdhoct08          0 2023-10-26 09:37 .staging                                                      
+drwxr-xr-x   - mavricbdhoct08 mavricbdhoct08          0 2023-10-25 06:58 data                                                          
+drwxr-xr-x   - mavricbdhoct08 mavricbdhoct08          0 2023-10-19 10:24 proj1                                                         
+drwxr-xr-x   - mavricbdhoct08 mavricbdhoct08          0 2023-10-19 11:15 proj2                                                         
+drwxrwxrwx   - mavricbdhoct08 mavricbdhoct08          0 2023-10-19 10:11 test                                                          
+drwxr-xr-x   - mavricbdhoct08 mavricbdhoct08          0 2023-10-26 13:46 tickitdb                                                      
+drwxr-xr-x   - mavricbdhoct08 mavricbdhoct08          0 2023-10-25 11:55 userratings                                                   
+-rw-r--r--   3 mavricbdhoct08 mavricbdhoct08     131746 2023-10-25 11:08 users.dat                                                     
+drwxr-xr-x   - mavricbdhoct08 mavricbdhoct08          0 2023-10-26 09:25 weatherdata       
+[mavricbdhoct08@ip-10-1-1-204 ~]$ hdfs fsck tickitdb                                                                                   
+Connecting to namenode via http://ip-10-1-2-24.ap-south-1.compute.internal:9870/fsck?ugi=mavricbdhoct08&path=%2Fuser%2Fmavricbdhoct08%2
+Ftickitdb                                                                                                                              
+FSCK started by mavricbdhoct08 (auth:SIMPLE) from /10.1.1.204 for path /user/mavricbdhoct08/tickitdb at Thu Oct 26 17:24:38 UTC 2023   
+                                                                                                                                       
+Status: HEALTHY                                                                                                                        
+ Number of data-nodes:  3                                                                                                              
+ Number of racks:               1                                                                                                      
+ Total dirs:                    1                                                                                                      
+ Total symlinks:                0                                                                                                      
+                                                                                                                                       
+Replicated Blocks:                                                                                                                     
+ Total size:    29207584 B                                                                                                             
+ Total files:   7                                                                                                                      
+ Total blocks (validated):      7 (avg. block size 4172512 B)                                                                          
+ Minimally replicated blocks:   7 (100.0 %)                                
+Over-replicated blocks:        0 (0.0 %)                                                                                              
+ Under-replicated blocks:       0 (0.0 %)                                                                                              
+ Mis-replicated blocks:         0 (0.0 %)                                                                                              
+ Default replication factor:    3                                                                                                      
+ Average block replication:     3.0                                                                                                    
+ Missing blocks:                0                                                                                                      
+ Corrupt blocks:                0                                                                                                      
+ Missing replicas:              0 (0.0 %)                                                                                              
+ Blocks queued for replication: 0                                                                                                      
+                                                                                                                                       
+Erasure Coded Block Groups:                                                                                                            
+ Total size:    0 B                                                                                                                    
+ Total files:   0                                                                                                                      
+ Total block groups (validated):        0                                                                                              
+ Minimally erasure-coded block groups:  0                                                                                              
+ Over-erasure-coded block groups:       0                                                                                              
+ Under-erasure-coded block groups:      0                                                                                              
+ Unsatisfactory placement block groups: 0                                                                                              
+ Average block group size:      0.0                                                                                                    
+ Missing block groups:          0                                                                                                      
+ Corrupt block groups:          0                                                                                                      
+ Missing internal blocks:       0                                                                                                      
+ Blocks queued for replication: 0                                                                                                      
+FSCK ended at Thu Oct 26 17:24:38 UTC 2023 in 1 milliseconds                                                                           
+The filesystem under path '/user/mavricbdhoct08/tickitdb' is HEALTHY     
